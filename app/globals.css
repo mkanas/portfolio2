@@ -1,26 +1,55 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1200px;
+  --container-center: true;
+  --container-padding: 15px;
+  --font-primary: 'JetBrains Mono', sans-serif;
+  --color-primary: #1c1c22;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-accent: #00ff99;
+  --color-accent-dark: #00e187;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-text: #fff;
+  --leading-hight: 2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  line-height: var(--leading-hight);
+}
+:root {
+  --leading-height: 1.1;
+  --font-weight: 600;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--font-weight);
+  line-height: var(--leading-height);
+}
+
+h1 {
+  --font-size: 48px;
+  --breakpoint-xl: 80px;
+}
+h2 {
+  --font-size: 36px;
+  --breakpoint-xl: 48px;
+}
+h3 {
+  --font-size: 28px;
+  --breakpoint-xl: 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-size: var(--font-size);
 }
