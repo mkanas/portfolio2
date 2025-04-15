@@ -56,7 +56,8 @@ const projects = [
 const Work = () => {
   const [project, setProject] = useState(projects[0])
   console.log(project.num)
-  const handleSlideChange = (swiper) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSlideChange = (swiper: { activeIndex: any }) => {
     const currentIndex = swiper.activeIndex
     setProject(projects[currentIndex])
   }
@@ -64,13 +65,13 @@ const Work = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-[88vh] flex flex-col justify-center py-12 xl:px-6"
+      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
-              <div className="text-8xl leading-none font-extrabold  ">
+              <div className="text-8xl leading-none font-extrabold text-stroke-white ">
                 {project.num}
               </div>
               <h2 className="text-[42px] font-bold leaidng-none text-white group-hover:text-accent transition-all duration-500 capitalize">
@@ -89,12 +90,12 @@ const Work = () => {
               <div className="flex items-center gap-4">
                 {/* Live project button */}
                 <Link href={project.live}>
-                  <TooltipProvider>
+                  <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger>
+                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
                         <BsArrowUpRight
                           size={24}
-                          className="text-white text-3xl"
+                          className="text-white text-3xl group-hover:text-accent"
                         />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -105,10 +106,13 @@ const Work = () => {
                 </Link>
                 {/* github project button */}
                 <Link href={project.github}>
-                  <TooltipProvider>
+                  <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger>
-                        <BsGithub size={24} className="text-white text-3xl" />
+                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                        <BsGithub
+                          size={24}
+                          className="text-white text-3xl group-hover:text-accent"
+                        />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p className="capitalize">Github repository</p>

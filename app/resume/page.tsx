@@ -214,7 +214,9 @@ const Resume = () => {
                       className="flex items-center justify-center xl:justify-start gap-4 "
                     >
                       <span className="text-white/60">{about.filedName}</span>
-                      <span className="text-xl">{about.FieldValue}</span>
+                      <span className="text-[15px] sm:text-xl">
+                        {about.FieldValue}
+                      </span>
                     </li>
                   ))}
                 </ul>
