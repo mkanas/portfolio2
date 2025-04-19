@@ -27,8 +27,8 @@ const projects = [
     stack: [
       { name: 'NextJs' },
       { name: 'Tailwind' },
-      { name: 'ReduxToolkit' },
-      { name: 'FramerMotion' },
+      { name: 'Redux Toolkit' },
+      { name: 'Framer Motion' },
     ],
     image: '/assets/work/thumb1.png',
     live: 'https://halalmart.vercel.app/',
@@ -58,10 +58,10 @@ const projects = [
     description:
       'We’ll build a full-featured app using React, Material UI, Nivo Charts, Formik, Yup, FullCalendar, and Data Grid. The app will include light/dark themes, 4 types of charts, 3 data table pages, a FAQ page, a form with validation, and calendar functionality.',
     stack: [
-      { name: 'ReactVite' },
-      { name: 'MaterialUI' },
-      { name: 'FullCalendar' },
-      { name: 'NivoCharts' },
+      { name: 'React Vite' },
+      { name: 'Material UI' },
+      { name: 'Full Calendar' },
+      { name: 'Nivo Charts' },
       { name: 'Formik' },
     ],
     image: '/assets/work/thumb3.png',
@@ -82,9 +82,9 @@ const Work = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      className="min-h-[80vh] flex flex-col justify-center pb-12 xl:px-0"
     >
-      <div className="container  mx-auto">
+      <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px] mx-1">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">

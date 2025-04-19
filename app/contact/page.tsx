@@ -3,6 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import emailjs from '@emailjs/browser'
+import { useRef, useState } from 'react'
 
 import {
   Select,
@@ -37,19 +39,49 @@ const info = [
 import { motion } from 'framer-motion'
 
 const Contact = () => {
+  const [selectedService, setSelectedService] = useState('')
+  const form = useRef<HTMLFormElement | null>(null)
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          'service_5mrk2sy', // Ganti dengan ID dari EmailJS
+          'template_qrezcci', // Ganti dengan Template ID
+          form.current,
+          'sjdIczSKdZNIszkaQ' // Ganti dengan Public Key dari EmailJS
+        )
+        .then(
+          () => {
+            alert('Message sent successfully!')
+            form.current?.reset()
+            setSelectedService('')
+          },
+          (error) => {
+            alert('Failed to send message: ' + error.text)
+          }
+        )
+    }
+  }
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' },
+        transition: { delay: 2.0, duration: 0.4, ease: 'easeInOut' },
       }}
       className="py-6"
     >
       <div className="container mx-auto mb-12">
         <div className="flex flex-col xl:flex-row gap-[30px] ">
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              ref={form}
+              onSubmit={sendEmail}
+            >
               <h4 className="sm:text-4xl text-[25px] text-accent">
                 Let&apos;s work together
               </h4>
@@ -58,12 +90,20 @@ const Contact = () => {
                 happen.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firtstname" placeholder="First Name" />
-                <Input type="lastname" placeholder="Last Name" />
-                <Input type="email" placeholder="Email Address" />
-                <Input type="phonenumber" placeholder="Phone Number" />
+                <Input type="text" name="first_name" placeholder="First Name" />
+                <Input type="text" name="last_name" placeholder="Last Name" />
+                <Input
+                  type="email"
+                  name="user_email"
+                  placeholder="Email Address"
+                />
+                <Input
+                  type="text"
+                  name="phone_number"
+                  placeholder="Phone Number"
+                />
               </div>
-              <Select>
+              <Select onValueChange={(value) => setSelectedService(value)}>
                 <SelectTrigger className="w-full h-[48px]">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -84,12 +124,26 @@ const Contact = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+
+              <input
+                type="hidden"
+                name="service"
+                value={selectedService}
+                readOnly
+                hidden
+              />
+
               <Textarea
                 className="h-[200px]"
+                name="message"
                 placeholder="Type your message here"
               />
-              <Button className="bg-accent hover:bg-accent/80 max-w-[150px] transition-all duration-500">
-                Send Message{' '}
+
+              <Button
+                type="submit"
+                className="bg-accent hover:bg-accent/80 max-w-[150px] transition-all duration-500"
+              >
+                Send Message
               </Button>
             </form>
           </div>

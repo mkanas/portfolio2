@@ -15,7 +15,7 @@ const about = {
       filedName: 'Email',
       FieldValue: ' muhammad.khairul.anas97@gmail.com',
     },
-    { filedName: 'Freelance', FieldValue: 'Avalaible' },
+    { filedName: 'Freelance', FieldValue: 'Availaible' },
     { filedName: 'Languange', FieldValue: 'Indonesia, English' },
   ],
 }
