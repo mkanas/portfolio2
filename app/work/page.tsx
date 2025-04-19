@@ -81,7 +81,14 @@ const Work = () => {
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 2,
+          duration: 1,
+          ease: 'easeInOut',
+        },
+      }}
       className="min-h-[80vh] flex flex-col justify-center pb-12 xl:px-0"
     >
       <div className="container mx-auto">
@@ -142,37 +149,49 @@ const Work = () => {
           </div>
 
           <div className="w-[w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              className="xl:h-[520px]"
-              onSlideChange={handleSlideChange}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: {
+                  delay: 2,
+                  duration: 1,
+                  ease: 'easeInOut',
+                },
+              }}
             >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full  ">
-                    <div
-                      className="h-[460px] relative group flex justify-center
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1}
+                className="xl:h-[520px]"
+                onSlideChange={handleSlideChange}
+              >
+                {projects.map((project, index) => {
+                  return (
+                    <SwiperSlide key={index} className="w-full  ">
+                      <div
+                        className="h-[460px] relative group flex justify-center
                      items-center "
-                    >
-                      <div className="relative xl:w-full xl:h-full h-[300px] w-[380px] ">
-                        <Image
-                          src={project.image}
-                          fill
-                          className="xl:object-cover "
-                          alt=""
-                        />
+                      >
+                        <div className="relative xl:w-full xl:h-full h-[300px] w-[380px] ">
+                          <Image
+                            src={project.image}
+                            fill
+                            className="xl:object-cover "
+                            alt=""
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                )
-              })}
-              <WorkSliderBtn
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary  text-[22px]       w-[44px] h-[44px] flex justify-center items-center transition-all"
-                iconStyles={undefined}
-              />
-            </Swiper>
+                    </SwiperSlide>
+                  )
+                })}
+                <WorkSliderBtn
+                  containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                  btnStyles="bg-accent hover:bg-accent-hover text-primary  text-[22px]       w-[44px] h-[44px] flex justify-center items-center transition-all"
+                  iconStyles={undefined}
+                />
+              </Swiper>
+            </motion.div>
           </div>
         </div>
       </div>

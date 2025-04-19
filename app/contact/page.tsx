@@ -47,10 +47,10 @@ const Contact = () => {
     if (form.current) {
       emailjs
         .sendForm(
-          'service_5mrk2sy', // Ganti dengan ID dari EmailJS
-          'template_qrezcci', // Ganti dengan Template ID
+          'service_5mrk2sy',
+          'template_qrezcci',
           form.current,
-          'sjdIczSKdZNIszkaQ' // Ganti dengan Public Key dari EmailJS
+          'sjdIczSKdZNIszkaQ'
         )
         .then(
           () => {
