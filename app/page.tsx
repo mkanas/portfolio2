@@ -36,7 +36,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="mb-12">
             <Photo />
           </div>
         </div>
