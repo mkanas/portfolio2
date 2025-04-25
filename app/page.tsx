@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { FiDownload } from 'react-icons/fi'
 import Socials from '@/components/Socials'
 import Photo from '@/components/Photo'
+import ScrollInfinite from '@/components/ScrollInfinite'
 const Home = () => {
   return (
     <section className="h-full">
@@ -41,6 +42,9 @@ const Home = () => {
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
           </div>
+        </div>
+        <div className="hidden xl:block">
+          <ScrollInfinite />
         </div>
       </div>
     </section>
